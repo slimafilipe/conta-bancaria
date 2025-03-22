@@ -1,13 +1,30 @@
 package dev.filipe.domain.model;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
+
+@Entity(name = "tb_card")
 public class Card {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true)
     private String number;
-    private String limit;
-    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+
+    @Column(name = "available_limit", scale = 13, precision = 2)
+    private BigDecimal limit;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNumber() {
         return number;
@@ -17,20 +34,13 @@ public class Card {
         this.number = number;
     }
 
-    public String getLimit() {
+    public BigDecimal getLimit() {
         return limit;
     }
 
-    public void setLimit(String limit) {
+    public void setLimit(BigDecimal limit) {
         this.limit = limit;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
 
 }
