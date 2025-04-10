@@ -1,4 +1,4 @@
-# API de uma conta bancaria Java RESTful 
+# API Java RESTful de uma conta bancaria  
 
 
 ## Diagrama de classes 
